@@ -2,12 +2,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "parser.h"
-#include "shell.h"
+#include "../include/parser.h"
+#include "../include/shell.h"
 
 
 
-char **ush_split(char *str, char delim, int *word_count)
+char **ush_split(char *str, char delim, int *argc)
 {
 	int capacity = 2;
 	char **array = malloc(capacity * sizeof(char *));
@@ -19,14 +19,14 @@ char **ush_split(char *str, char delim, int *word_count)
 	int len = strlen(str);
 	char word[len + 1];
 	int j = 0;
-	*word_count = 0;
+	*argc = 0;
 
 	for (int i = 0; i <= len; i++) {
 		if (str[i] != delim && str[i] != '\0') {
 			word[j++] = str[i];
 		} else if  (j > 0) {
 			word[j] = '\0';
-			if (*word_count >= capacity) {
+			if (*argc >= capacity) {
 				capacity *= 2;
 				array = realloc(array, capacity * sizeof(char *));
 				if (array == NULL) {
@@ -34,8 +34,8 @@ char **ush_split(char *str, char delim, int *word_count)
 					return NULL;
 				}
 			}
-			array[*word_count] = strdup(word);
-			(*word_count)++;
+			array[*argc] = strdup(word);
+			(*argc)++;
 			j = 0;
 		}
 	}

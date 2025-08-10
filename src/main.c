@@ -1,14 +1,23 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 
-#include "shell.h"
-#include "parser.h"
+
+#include "../include/shell.h"
+#include "../include/parser.h"
 
 
 int main()
 {
 	while (1) {
-		ush_prompt("ush $ ");
+		char cwd[_MAX_PATH];
+		char prompt[1024];
+
+		getcwd(cwd, sizeof(cwd));
+		sprintf(prompt, "%s $ ", cwd);
+
+		ush_prompt(prompt);
 		char *cmd = ush_input();
 		if (!cmd) continue;
 

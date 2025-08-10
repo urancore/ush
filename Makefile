@@ -7,11 +7,12 @@ CMD_DIR     := command
 BUILD_DIR   := build
 BIN         := ush
 
-SRC_FILES   := $(wildcard $(SRC_DIR)/*.c)
-CMD_FILES   := $(wildcard $(CMD_DIR)/*.c)
-ALL_SRCS    := $(SRC_FILES) $(CMD_FILES)
+SRC_FILES   	:= $(wildcard $(SRC_DIR)/*.c)
+SRC_CMD_FILES 	:= $(wildcard $(SRC_DIR)/commands/*.c)
+CMD_FILES   	:= $(wildcard $(CMD_DIR)/*.c)
+ALL_SRCS    	:= $(SRC_FILES) $(SRC_CMD_FILES) $(CMD_FILES)
 
-OBJ_FILES   := $(patsubst %.c, $(BUILD_DIR)/%.o, $(ALL_SRCS))
+OBJ_FILES   	:= $(patsubst %.c, $(BUILD_DIR)/%.o, $(ALL_SRCS))
 
 
 .PHONY: all
