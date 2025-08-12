@@ -8,7 +8,7 @@
 void pwd_call_func(USH_Command *cmd)
 {
 	(void)cmd;
-	char cwd[_MAX_PATH];
+	char cwd[MAX_PATH_LEN];
 	getcwd(cwd, sizeof(cwd));
 	ush_printf("%s\n", cwd);
 }

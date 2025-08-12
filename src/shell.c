@@ -15,6 +15,17 @@
 #include <sys/wait.h>
 #endif
 
+char *ush_strdup(const char *s)
+{
+	size_t len = strlen(s) + 1;
+	char *dup = malloc(len);
+	if (dup) {
+		memcpy(dup, s, len);
+	}
+	return dup;
+}
+
+
 void ush_printf(const char *format, ...)
 {
 	va_list args;

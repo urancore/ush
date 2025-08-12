@@ -7,6 +7,8 @@
 #define PRINT_STREAM stdout
 
 
+#define MAX_PATH_LEN 512
+
 typedef struct USH_Command USH_Command;
 
 typedef void (ush_call_func)(USH_Command *cmd);

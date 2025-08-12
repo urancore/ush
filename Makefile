@@ -1,5 +1,5 @@
 CC       := gcc
-CFLAGS   := -Wall -Wextra -Werror -std=c99 -g
+CFLAGS   := -Wall -Wextra -Werror -g
 LDFLAGS  := -static-libgcc -Wl,--gc-sections
 
 SRC_DIR     := src
@@ -9,7 +9,7 @@ BIN_DIR     := bin
 INCLUDE_DIR := include
 LIB_DIR     := lib
 
-BIN         := $(BIN)/ush.exe
+BIN         := $(BIN_DIR)/ush
 LIB         := $(LIB_DIR)/libush.a
 
 SRC_FILES       := $(wildcard $(SRC_DIR)/*.c)

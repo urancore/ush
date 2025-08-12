@@ -11,11 +11,11 @@
 int main()
 {
 	while (1) {
-		char cwd[_MAX_PATH];
+		char cwd[MAX_PATH_LEN];
 		char prompt[1024];
 
 		getcwd(cwd, sizeof(cwd));
-		sprintf(prompt, "%s $ ", cwd);
+		sprintf(prompt, "(ush) %s $ ", cwd);
 
 		ush_prompt(prompt);
 		char *cmd = ush_input();
@@ -29,7 +29,7 @@ int main()
 		}
 
 		USH_Command command = {0};
-		command.name = strdup(args[0]);
+		command.name = args[0];
 		command.argc = argc;
 		command.args = args;
 
