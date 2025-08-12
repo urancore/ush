@@ -103,8 +103,17 @@ void execute_command(USH_Command *cmd)
 	PROCESS_INFORMATION pi = {0};
 	si.cb = sizeof(si);
 
+	char full_path[MAX_PATH];
+	DWORD found = SearchPathA(NULL, cmd->name, ".exe", MAX_PATH, full_path, NULL);
+
+	if (found == 0) {
+		ush_error("Command not found: %s\n", cmd->name);
+		free(cmdline);
+		return;
+	}
+
 	BOOL success = CreateProcessA(
-		NULL,
+		full_path,
 		cmdline,
 		NULL, NULL,
 		FALSE,
@@ -112,7 +121,6 @@ void execute_command(USH_Command *cmd)
 		NULL, NULL,
 		&si, &pi
 	);
-
 	if (!success) {
 		ush_error("Command not found: %s\n", cmd->name);
 		free(cmdline);
