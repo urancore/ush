@@ -1,6 +1,7 @@
 # USH - Custom Shell in C
 ush is a simple shell written in C, featuring built-in commands and support for custom commands
 ![alt text](assets/img/image.png)
+
 ## Features
 - Built-in commands are located in src/commands/loader.c
 - Easily add your own custom commands
