@@ -12,4 +12,5 @@ void help_call_func(USH_Command *cmd)
 	for (int i = 0; command_list[i].name != NULL; i++) {
 		ush_printf("%s\n", command_list[i].name);
 	}
+	return;
 }

@@ -29,7 +29,7 @@ int main()
 		}
 
 		USH_Command command = {0};
-		command.name = args[0];
+		command.name = strdup(args[0]);
 		command.argc = argc;
 		command.args = args;
 

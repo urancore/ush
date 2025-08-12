@@ -34,7 +34,7 @@ char **ush_split(char *str, char delim, int *argc)
 					return NULL;
 				}
 			}
-			array[*argc] = word;
+			array[*argc] = strdup(word);
 			(*argc)++;
 			j = 0;
 		}
